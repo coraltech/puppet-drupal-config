@@ -1,0 +1,5 @@
+{
+  "server_ip" : "172.10.20.1",
+  "profiles" : [ "panopoly_db" ],
+  "db_server_id" : "1"
+}
