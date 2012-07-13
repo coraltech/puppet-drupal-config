@@ -1,6 +1,8 @@
 {
   "server_ip" : "172.10.20.2",
-  "profiles" : [ "panopoly_db" ],
-  "db_server_id" : "2",
-  "db_origin_ip" : "172.10.20.1"
+  "facts" : {
+    "location" : "vagrant",
+    "server_type" : "vagrant-panopoly-db-slave"
+  },
+  "db_server_id" : "2"
 }

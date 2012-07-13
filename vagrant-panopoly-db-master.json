@@ -1,0 +1,4 @@
+{
+  "profiles" : [ "panopoly_db" ],
+  "db_server_id" : "1"
+}

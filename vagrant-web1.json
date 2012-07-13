@@ -1,47 +1,7 @@
 {
   "server_ip" : "172.10.10.1",
-  "profiles" : [ "panopoly_site" ],
-  "haproxy_proxies" : {
-    "mysql" : {
-      "port" : "3306",
-      "mode" : "tcp",
-      "balance" : "leastconn",
-      "options" : {
-        "httpchk" : []
-      },
-      "servers" : {
-        "db1" : {
-          "ip" : "172.10.20.1",
-          "port" : "3306",
-          "settings" : [
-            "check",
-            [ "port", "9200"  ],
-            [ "inter", "12000" ],
-            [ "rise", "3" ],
-            [ "fall", "3" ]
-          ]        
-        },
-        "db2" : {
-          "ip" : "172.10.20.2",
-          "port" : "3306",
-          "settings" : [
-            "check",
-            [ "port", "9200"  ],
-            [ "inter", "12000" ],
-            [ "rise", "3" ],
-            [ "fall", "3" ]
-          ]        
-        }      
-      }
-    }
-  },
-  "panopoly_databases" : {
-    "panopoly" : {
-      "driver" : "mysql",
-      "username" : "panopoly",
-      "password" : "panopoly",
-      "host" : "localhost",
-      "port" : "3306",
-    }
+  "facts" : {
+    "location" : "vagrant",
+    "server_type" : "vagrant-panopoly-app"
   }
 }
