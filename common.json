@@ -1,5 +1,9 @@
 {
   "profiles" : [ "panopoly_db", "panopoly_site" ],
+  "facts" : {
+    "environment" : "production",
+    "location" : "dc1"
+  },
   "locales" : [ "en_US.UTF-8 UTF-8" ],
   "allow_icmp" : "true",
   "email_servers" : [],
@@ -22,6 +26,12 @@
   ],
   "git_root_email" : "<YOUR EMAIL ADDRESS HERE>",
   "git_skel_email" : "<YOUR EMAIL ADDRESS HERE>",
+  "hiera_hierarchy" : [ 
+    "%{hostname}", 
+    "%{location}", 
+    "%{environment}", 
+    "common" 
+  ],
   "puppet_source" : "git://github.com/coraltech/puppet-panopoly-lib.git",
   "puppet_revision" : "master",
   "puppet_update_interval" : "30",
