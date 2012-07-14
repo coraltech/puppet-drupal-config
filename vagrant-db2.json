@@ -1,5 +1,5 @@
 {
-  "server_ip" : "172.10.20.2",
+  "server_ip" : "172.10.20.11",
   "facts" : {
     "location" : "vagrant",
     "server_type" : "vagrant-panopoly-db-slave"
