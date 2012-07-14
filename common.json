@@ -42,7 +42,7 @@
     "%{server_type}",
     "common"
   ],
-  "puppet_source" : "git://github.com/coraltech/puppet-lib.git",
+  "puppet_source" : "git://github.com/coraltech/puppet-panopoly-lib.git",
   "puppet_revision" : "master",
   "puppet_update_interval" : "30",
   "reports" : "log,store,tagmail",
