@@ -1,0 +1,6 @@
+{
+  "global_facts" : {
+    "server_type" : "percona_server"
+  },
+  "percona_origin_addresses" : ""
+}
