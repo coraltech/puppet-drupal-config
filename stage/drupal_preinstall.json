@@ -1,0 +1,7 @@
+{
+  "global_facts" : {
+    "server_type" : "drupal_server"
+  },
+  "apache_http_port" : "80",
+  "apache_https_port" : "443"
+}
