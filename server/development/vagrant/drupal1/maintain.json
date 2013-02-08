@@ -1,0 +1,131 @@
+{
+  "global_facts" : {
+    "server_type" : "drupal_server"
+  },
+  "haproxy_proxies" : {
+    "apache_http" : {
+      "port" : "80",
+      "directives" : {
+        "mode" : "http",
+        "balance" : "roundrobin",
+        "cookie" : [
+          "SERVERID",
+          "insert",
+          "nocache",
+          "indirect"
+        ]
+      },
+      "options" : {
+        "httpclose" : "",
+        "forwardfor" : "",
+        "httpchk" : [
+          "HEAD",
+          "/index.php",
+          "HTTP/1.0"
+        ]
+      },
+      "servers" : {
+        "web1" : {
+          "ip" : "172.10.10.11",
+          "port" : "160",
+          "settings" : [
+            [ "port", "160" ],
+            [ "cookie", "web1" ],
+            "check"
+          ]
+        },
+        "web2" : {
+          "ip" : "172.10.10.12",
+          "port" : "80",
+          "settings" : [
+            [ "port", "160" ],
+            [ "cookie", "web2" ],
+            "check",
+            "backup"
+          ]
+        }
+      }
+    },
+    "apache_https" : {
+      "port" : "443",
+      "directives" : {
+        "mode" : "http",
+        "balance" : "roundrobin",
+        "cookie" : [
+          "SERVERID",
+          "insert",
+          "nocache",
+          "indirect"
+        ]
+      },
+      "options" : {
+        "httpclose" : "",
+        "forwardfor" : "",
+        "httpchk" : [
+          "HEAD",
+          "/index.php",
+          "HTTP/1.0"
+        ]
+      },
+      "servers" : {
+        "secure1" : {
+          "ip" : "172.10.10.11",
+          "port" : "886",
+          "settings" : [
+            [ "port", "886" ],
+            [ "cookie", "secure1" ],
+            "check"
+          ]
+        },
+        "secure2" : {
+          "ip" : "172.10.10.12",
+          "port" : "443",
+          "settings" : [
+            [ "port", "886" ],
+            [ "cookie", "secure2" ],
+            "check",
+            "backup"
+          ]
+        }
+      }
+    }
+  },
+  "keepalived_service_ensure" : "running",
+  "keepalived_vrrp_instances" : [
+    {
+      "name" : "VI_1",
+      "vrrp_unicast_bind" : "172.10.10.11",
+      "vrrp_unicast_peer" : "172.10.10.12",
+      "interface" : "eth2",
+      "state" : "MASTER",
+      "priority" : "101",
+      "virtual_router_id" : "51",
+      "smtp_alert" : "",
+      "advert_int" : "1",
+      "virtual_ipaddress" : [ "172.5.5.5" ],
+      "track_script" : [ "check_haproxy" ],
+      "authentication" : {
+        "auth_type" : "AH",
+        "auth_pass" : "@wfegI85GE%%"
+      }
+    }
+  ],
+  "apache_drupal_site_panopoly_drupal_databases" : {
+    "panopoly" : {
+      "driver" : "mysql",
+      "username" : "panopoly",
+      "password" : "panopoly",
+      "host" : "localhost",
+      "port" : "3312",
+      "slaves" : {
+        "panopoly" : {
+          "driver" : "mysql",
+          "username" : "panopoly",
+          "password" : "panopoly",
+          "host" : "localhost",
+          "port" : "3306"
+        }
+      }
+    }
+  }
+}
