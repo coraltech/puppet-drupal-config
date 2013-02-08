@@ -1,0 +1,31 @@
+{
+  "profiles" : [ "apache_file_server" ],
+  "global_facts" : {
+    "server_type" : "file_server"
+  }
+  "file_servers" : [ "public" ],
+  "file_server_public_apache_admin_email" : "",
+  "file_server_public_apache_ssl_cert" : "",
+  "file_server_public_apache_ssl_key" : "",
+  "file_server_public_cloudfuse_gid" : "0",
+  "file_server_public_cloudfuse_umask" : "007",
+  "file_server_public_cloudfuse_auth_url" : "https://auth.api.rackspacecloud.com/v1.0",
+  "file_server_public_cloudfuse_cloud_user" : "",
+  "file_server_public_cloudfuse_cloud_api_key" : "",
+  "file_server_public_cloudfuse_cache_timeout" : "300",
+  "file_server_public_cloudfuse_cloud_user" : "",
+  "file_server_public_cloudfuse_cloud_api_key" : "",
+  "file_server_public_apache_server_name" : "files.loc",
+  "file_server_public_apache_aliases" : "test.drupal1.loc",
+  "file_server_public_apache_admin_email" : "",
+  "file_server_public_apache_vhost_ip" : "*",
+  "file_server_public_apache_priority" : "25",
+  "file_server_public_apache_options" : "Indexes FollowSymLinks MultiViews",
+  "file_server_public_apache_http_port" : "160",
+  "file_server_public_apache_https_port" : "886",
+  "file_server_public_apache_use_ssl" : "true",
+  "file_server_public_apache_ssl_cert" : "",
+  "file_server_public_apache_ssl_key" : "",
+  "file_server_public_apache_error_log_level" : "warn",
+  "file_server_public_apache_rewrite_log_level" : "0"
+}
