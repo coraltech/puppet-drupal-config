@@ -1,0 +1,6 @@
+{
+  "profiles" : [ "apache_drupal" ],
+  "global_facts" : {
+    "server_stage" : "drupal_preinstall"
+  }
+}
