@@ -1,0 +1,8 @@
+{
+  "profiles" : [ "percona_server" ],
+  "global_facts" : {
+    "server_stage" : "percona_initialize_slave"
+  },
+  "percona_server_id" : "3",
+  "percona_server_ip" : "172.10.20.13"
+}
