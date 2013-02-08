@@ -1,0 +1,58 @@
+{
+  "percona_server_id" : "1",
+  "percona_server_ip" : "",
+  "percona_origin_addresses" : "",
+  "percona_cluster_name" : "drupal",
+  "percona_allow_remote" : "true",
+  "percona_configure_firewall" : "true",
+  "percona_wsrep_slave_threads" : "2",
+  "percona_wsrep_certify_non_pk" : "1",
+  "percona_wsrep_max_ws_rows" : "131072",
+  "percona_wsrep_max_ws_size" : "1073741824",
+  "percona_wsrep_debug" : "0",
+  "percona_wsrep_convert_lock_to_trx" : "0",
+  "percona_wsrep_retry_autocommit" : "1",
+  "percona_wsrep_auto_increment_control" : "1",
+  "percona_wsrep_causal_reads" : "0",
+  "percona_innodb_flush_log_at_trx_commit" : "1",  
+  "percona_innodb_autoinc_lock_mode" : "2",
+  "percona_innodb_locks_unsafe_for_binlog" : "1",  
+  "percona_configurations" : {
+    "mysql" : {
+      "no-auto-rehash" : "",
+      "safe-updates" : ""
+    },
+    "mysqld" : {
+      "key_buffer_size" : "256M",
+      "max_allowed_packet" : "1M",
+      "table_open_cache" : "256",
+      "sort_buffer_size" : "1M",
+      "read_buffer_size" : "1M",
+      "read_rnd_buffer_size" : "4M",
+      "myisam_sort_buffer_size" : "64M",
+      "query_cache_size" : "16M",
+      "thread_cache_size" : "8",
+      "thread_concurrency" : "8",
+      "innodb_buffer_pool_size" : "256M",
+      "innodb_additional_mem_pool_size" : "20M",
+      "innodb_log_buffer_size" : "8M",
+      "innodb_lock_wait_timeout" : "50",
+      "log-slave-updates" : "",
+      "skip-external-locking" : "",  
+      "skip-networking" : "",
+    },
+    "mysqldump" : {
+      "quick" : "true",
+      "max_allowed_packet" : "16M"
+    },
+    "myisamchk" : {
+      "key_buffer_size" : "128M",
+      "sort_buffer_size" : "128M",
+      "read_buffer" : "2M",
+      "write_buffer" : "2M"    
+    },
+    "mysqlhotcopy" : {
+      "interactive-timeout" : ""
+    } 
+  }
+}
