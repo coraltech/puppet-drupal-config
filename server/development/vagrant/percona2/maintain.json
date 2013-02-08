@@ -1,0 +1,58 @@
+{
+  "global_facts" : {
+    "server_type" : "percona_server"
+  },
+  "haproxy_proxies" : {
+    "percona" : {
+      "port" : "3306",
+      "directives" : {
+        "mode" : "tcp",
+        "balance" : "leastconn"
+      },
+      "options" : {
+        "httpchk" : ""
+      },
+      "servers" : {
+        "db1" : {
+          "ip" : "172.10.20.12",
+          "port" : "6612",
+          "settings" : [
+            "check",
+            [ "port", "10200" ],
+            [ "inter", "12000" ],
+            [ "rise", "3" ],
+            [ "fall", "3" ]
+          ]
+        },
+        "db2" : {
+          "ip" : "172.10.20.13",
+          "port" : "3306",
+          "settings" : [
+            "check",
+            [ "port", "10200" ],
+            [ "inter", "12000" ],
+            [ "rise", "3" ],
+            [ "fall", "3" ],
+            "backup"
+          ]
+        },
+        "db3" : {
+          "ip" : "172.10.20.11",
+          "port" : "3306",
+          "settings" : [
+            "check",
+            [ "port", "10200" ],
+            [ "inter", "12000" ],
+            [ "rise", "3" ],
+            [ "fall", "3" ],
+            "backup"
+          ]
+        }
+      }
+    }
+  },
+  "percona_origin_addresses" : [
+    "172.10.20.11",
+    "172.10.20.13"
+  ]
+}
