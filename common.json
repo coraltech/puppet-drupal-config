@@ -1,85 +1,118 @@
 {
   "profiles" : [],
   "global_facts" : {
-    "environment" : "production",
-    "location" : "dc1",
-    "server_type" : "full"
+    "server_profile" : "generic",
+    "server_stage" : "setup",
+    "server_type" : "base"    
   },
-  "databases" : [ "test" ],
-  "database_default_user" : "db_user",
-  "database_default_password" : "db_user",
-  "database_test_databases" : [ "test1", "test2" ],
-  "database_test_user" : "test",
-  "database_test_password" : "test",
-  "drupal_sites" : [ "test" ],
-  "drupal_site_use_dev_tools" : "true",
-  "drupal_site_default_domain" : "",
-  "drupal_site_default_aliases": "",
-  "drupal_site_default_ip" : "",
-  "drupal_site_default_admin_email" : "",
-  "drupal_site_default_repo_name" : "",
-  "drupal_site_default_source" : "git://git.drupal.org/project/panopoly.git",
-  "drupal_site_default_revision" : "7.x-1.x",
-  "drupal_site_default_use_make" : "true",
-  "drupal_site_default_make_file" : "build-panopoly.make",
-  "drupal_site_default_include_repos" : "false",
-  "drupal_site_default_conf_dir" : "default",
-  "drupal_site_default_files_dir" : "",
-  "drupal_site_default_databases" : "",
-  "drupal_site_default_base_url" : "",
-  "drupal_site_default_cookie_domain" : "",
-  "drupal_site_default_session_max_lifetime" : "",
-  "drupal_site_default_session_cookie_lifetime" : "",
-  "drupal_site_default_pcre_backtrack_limit" : "",
-  "drupal_site_default_pcre_recursion_limit" : "",
-  "drupal_site_default_ini_settings" : {},
-  "drupal_site_default_conf" : {},
-  "drupal_site_test_databases" : {
-    "test1" : {
-      "driver" : "mysql",
-      "username" : "test",
-      "password" : "test",
-      "host" : "localhost",
-      "port" : "3312",
-      "slaves" : {
-        "test1" : {
-          "driver" : "mysql",
-          "username" : "test",
-          "password" : "test",
-          "host" : "localhost",
-          "port" : "3306"
-        }
-      }
-    }
-  },
-  "base_admin_name" : "admin",
-  "base_admin_email" : "",
-  "base_admin_allowed_ssh_key" : "",
-  "base_admin_allowed_ssh_key_type" : "rsa",
-  "base_admin_public_ssh_key" : "",
-  "base_admin_private_ssh_key" : "",
-  "base_admin_ssh_key_type" : "rsa",
-  "base_puppet_source" : "git://github.com/coraltech/puppet-panopoly-lib.git",
-  "base_puppet_revision" : "master",
-  "base_config_source" : "",
-  "base_config_revision" : "master",
+  "global_setup_ensure" : "present",
+  "global_build_ensure" : "present",
+  "global_common_ensure" : "present",
+  "global_runtime_ensure" : "present",
+  "global_make_revision" : "master",
+  "global_make_dev_ensure" : "present",
+  "global_make_user" : "root",
+  "global_make_group" : "root",
+  "global_make_options" : "",  
+  "iptables_allow_icmp" : "true",  
+  "ssh_openssh_package_ensure" : "present",
+  "ssh_openssh_service_ensure" : "running",
+  "ssh_libcurl_openssl_dev_ensure" : "present",
+  "ssh_import_id_ensure" : "present",
+  "ssh_configure_firewall" : "true",
+  "ssh_port" : "22",
+  "ssh_allow_root_login" : "false",
+  "ssh_allow_password_auth" : "false",
+  "ssh_permit_empty_passwords" : "false",
+  "ssh_users" : [],
+  "ssh_user_groups" : [ "admin", "git" ],
+  "sudo_exempt_group" : "admin",
+  "sudo_permissions" : [ 
+    "%admin ALL=(ALL) NOPASSWD:ALL" 
+  ],
   "ntp_package_ensure" : "present",
   "ntp_service_ensure" : "running",
-  "ntp_servers" : [],
-  "nullmailer_package_ensure" : "present",
-  "nullmailer_package_ensure" : "present",
-  "nullmailer_remotes" : [
-    {
-      "host" : "mail.example.com",
-      "user" : "example@example.com",
-      "password" : "password"
-    }
+  "locales_ensure" : "present",
+  "locales" : [ "en_US.UTF-8 UTF-8" ],
+  "users_editor" : "vim",
+  "users_umask" : "002",
+  "users_root_name" : "Administrator",
+  "users_root_email" : "",
+  "users_root_public_ssh_key" : "",
+  "users_root_private_ssh_key" : "",
+  "users_root_ssh_key_type" : "rsa",
+  "users_skel_name" : "General user",
+  "users_skel_email" : "",
+  "users_user_ensure" : "present",
+  "users_user_gid" : "",
+  "users_user_group" : "",
+  "users_user_alt_groups" : [],
+  "users_user_email" : "",
+  "users_user_home" : "",
+  "users_user_comment" : "",
+  "users_user_allowed_ssh_key" : "",
+  "users_user_allowed_ssh_key_type" : "rsa",
+  "users_user_public_ssh_key" : "",
+  "users_user_private_ssh_key" : "",
+  "users_user_ssh_key_type" : "rsa",
+  "users_user_password" : "",
+  "users_user_shell" : "/bin/bash",
+  "users_user_system" : "false",
+  "git_ensure" : "present",
+  "git_allowed_ssh_key" : "",
+  "git_allowed_ssh_key_type" : "rsa",
+  "git_password" : "",
+  "git_user" : "git",
+  "git_gid" : "785",
+  "git_group" : "git",
+  "git_alt_groups" : [],
+  "git_root_name" : "Administrator",
+  "git_root_email" : "",
+  "git_skel_name" : "User",
+  "git_skel_email" : "",
+  "git_source" : "",
+  "git_revision" : "master",
+  "git_base" : "false",
+  "git_push_commands" : [],
+  "ruby_ensure" : "present",
+  "ruby_rubygems_ensure" : "present",
+  "ruby_gems" : [],
+  "puppet_package_ensure" : "present",
+  "puppet_service_ensure" : "stopped",
+  "puppet_vim_puppet_ensure" : "present",
+  "puppet_module_ensure" : "present",
+  "puppet_manifest_file" : "site.pp",
+  "puppet_reports" : [ "store" ],
+  "puppet_report_emails" : {},
+  "puppet_use_cron" : "true",
+  "puppet_cron_hour" : "",
+  "puppet_cron_minute" : "*/30",
+  "puppet_cron_month" : "",
+  "puppet_cron_monthday" : "",
+  "puppet_cron_weekday" : "",
+  "hiera_ensure" : "present",
+  "hiera_hierarchy" : [
+    "profile/%{::server_profile}/%{::server_stage}",
+    "profile/%{::server_profile}",
+    "server/%{::server_environment}/%{::server_location}/%{::hostname}/%{::server_stage}",
+    "server/%{::server_environment}/%{::server_location}/%{::hostname}",
+    "server/%{::server_environment}/%{::hostname}/%{::server_stage}",
+    "server/%{::server_environment}/%{::hostname}",
+    "server/%{::hostname}/%{::server_stage}",
+    "server/%{::hostname}",
+    "location/%{::server_location}/%{::server_stage}",
+    "location/%{::server_location}",
+    "environment/%{::server_environment}/%{::server_stage}",
+    "environment/%{::server_environment}",
+    "stage/%{::server_stage}",
+    "type/%{::server_type}",
+    "common"
   ],
   "xinetd_package_ensure" : "present",
   "xinetd_service_ensure" : "running",
   "xinetd_service_port" : "",
   "xinetd_service_server" : "",
-  "xinetd_service_ensure" : "present",
+  "xinetd_service_file_ensure" : "present",
   "xinetd_service_cps" : "",
   "xinetd_service_flags" : "",
   "xinetd_service_log_on_failure" : "",
@@ -94,126 +127,11 @@
   "xinetd_service_wait" : "",
   "xinetd_service_bind" : "0.0.0.0",
   "xinetd_service_type" : "",
-  "iptables_allow_icmp" : "true",
-  "sudo_permissions" : [ 
-    "%admin ALL=(ALL) NOPASSWD:ALL" 
-  ],
-  "ssh_openssh_package_ensure" : "present",
-  "ssh_openssh_service_ensure" : "running",
-  "ssh_libcurl_openssl_dev_ensure" : "present",
-  "ssh_import_id_ensure" : "present",
-  "ssh_configure_firewall" : "true",
-  "ssh_port" : "22",
-  "ssh_allow_root_login" : "false",
-  "ssh_allow_password_auth" : "false",
-  "ssh_permit_empty_passwords" : "false",
-  "ssh_users" : [],
-  "ssh_user_groups" : [ "admin" ],
-  "locales_ensure" : "present",
-  "locales" : [ "en_US.UTF-8 UTF-8" ],
-  "users_editor" : "vim",
-  "users_umask" : "002",
-  "user_root_name" : "Root account",
-  "user_root_email" : "",
-  "user_root_public_ssh_key" : "",
-  "user_root_private_ssh_key" : "",
-  "user_root_ssh_key_type" : "rsa",
-  "user_skel_name" : "User account",
-  "user_skel_email" : "",
-  "user_ensure" : "present",
-  "user_group" : "",
-  "user_alt_groups" : [],
-  "user_email" : "",
-  "user_home" : "",
-  "user_comment" : "",
-  "user_allowed_ssh_key" : "",
-  "user_allowed_ssh_key_type" : "rsa",
-  "user_public_ssh_key" : "",
-  "user_private_ssh_key" : "",
-  "user_ssh_key_type" : "rsa",
-  "user_password" : "",
-  "user_shell" : "/bin/bash",
-  "user_system" : "false",
-  "git_ensure" : "present",
-  "git_allowed_ssh_key" : "",
-  "git_allowed_ssh_key_type" : "rsa",
-  "git_password" : "",
-  "git_user" : "git",
-  "git_group" : "git",
-  "git_alt_groups" : [],
-  "git_root_name" : "Root",
-  "git_root_email" : "root@localhost",
-  "git_skel_name" : "User",
-  "git_skel_email" : "user@localhost",
-  "git_source" : "",
-  "git_revision" : "master",
-  "git_base" : "false",
-  "git_push_commands" : [],
-  "ruby_ensure" : "present",
-  "ruby_rubygems_ensure" : "present",
-  "ruby_gems" : [],
-  "puppet_package_ensure" : "present",
-  "puppet_service_ensure" : "stopped",
-  "puppet_vim_puppet_ensure" : "present",
-  "puppet_module_ensure" : "present",
-  "puppet_manifest_file" : "site.pp",
-  "puppet_reports" : [ "log", "store", "tagmail" ],
-  "puppet_report_emails" : {
-    "example@example.com" : "all"
-  },
-  "puppet_update_interval" : "30",
-  "hiera_ensure" : "present",
-  "hiera_hierarchy" : [
-    "%{hostname}",
-    "%{location}",
-    "%{environment}",
-    "%{server_type}",
-    "common"
-  ],
-  "keepalived_package_ensure" : "present",
-  "keepalived_service_ensure" : "running",
-  "keepalived_firewall_ports" : [],
-  "keepalived_sysctl_directives" : {},
-  "keepalived_global_definitions" : {
-    "notification_email" : [
-      "example@example.com"
-    ],
-    "notification_email_from" : "hostnae@example.com",
-    "smtp_server" : "127.0.0.1",
-    "smtp_connect_timeout" : "15"
-  },
-  "keepalived_virtual_servers" : [],
-  "keepalived_vrrp_sync_groups" : [],
-  "keepalived_vrrp_instances" : [
-    {
-      "name" : "VI_1",
-      "interface" : "eth0",
-      "state" : "MASTER",
-      "priority" : "101",
-      "virtual_router_id" : "51",
-      "smtp_alert" : "",
-      "authentication" : {
-        "auth_type" : "PASS",
-        "auth_pass" : "password"
-      },
-      "virtual_ipaddress" : [
-        "127.0.0.1"
-      ],
-      "track_script" : [
-        "check_haproxy"
-      ]
-    }  
-  ],
-  "keepalived_vrrp_scripts" : [
-    {
-      "name" : "check_haproxy",
-      "script" : "'killall -0 haproxy'",
-      "interval" : "2",
-      "weight" : "2"
-    }
-  ],
+  "nullmailer_package_ensure" : "present",
+  "nullmailer_package_ensure" : "present",
+  "nullmailer_remotes" : [],
   "haproxy_package_ensure" : "present",
-  "haproxy_service_ensure" : "running",
+  "haproxy_service_ensure" : "stopped",
   "haproxy_configure_firewall" : "true",
   "haproxy_user" : "haproxy",
   "haproxy_group" : "haproxy",
@@ -224,161 +142,50 @@
   "haproxy_default_mode" : "http",
   "haproxy_default_retries" : "3",
   "haproxy_default_max_connections" : "1000",
-  "haproxy_default_options" : [
-    "tcplog",
-    "dontlognull",
-    "redispatch"
-  ],
-  "haproxy_proxies" : {
-    "apache_http" : {
-      "port" : "80",
-      "directives" : {
-        "mode" : "http",
-        "balance" : "roundrobin",
-        "cookie" : [ 
-          "SERVERID", 
-          "insert", 
-          "indirect" 
-        ]
-      },      
-      "options" : {
-        "httpclose" : "",
-        "forwardfor" : "",
-        "httpchk" : [ 
-          "HEAD", 
-          "/index.php", 
-          "HTTP/1.0" 
-        ]
-      },
-      "servers" : {
-        "web1" : {
-          "ip" : "127.0.0.1",
-          "port" : "160",
-          "settings" : [
-            [ "port", "160" ],
-            [ "cookie", "web1" ],
-            "check"
-          ]        
-        }   
-      }
-    },
-    "apache_https" : {
-      "port" : "443",
-      "directives" : {
-        "mode" : "tcp",
-        "balance" : "source",
-        "cookie" : [ 
-          "SERVERID", 
-          "insert", 
-          "indirect" 
-        ]
-      }, 
-      "options" : {
-        "httpclose" : "",
-        "forwardfor" : "",
-        "httpchk" : [ 
-          "HEAD", 
-          "/index.php", 
-          "HTTP/1.0" 
-        ]
-      },
-      "servers" : {
-        "secure1" : {
-          "ip" : "127.0.0.1",
-          "port" : "886",
-          "settings" : [
-            [ "port", "886" ],
-            [ "cookie", "secure1" ],
-            "check"
-          ]        
-        }   
-      }
-    },
-    "mysql_write" : {
-      "port" : "3312",
-      "directives" : {
-        "mode" : "tcp",
-        "balance" : "leastconn"
-      }, 
-      "options" : [
-        "httpchk"
-      ],
-      "servers" : {
-        "db1" : {
-          "ip" : "127.0.0.1",
-          "port" : "6612",
-          "settings" : [
-            "check",
-            [ "port", "9200"  ],
-            [ "inter", "12000" ],
-            [ "rise", "3" ],
-            [ "fall", "3" ]
-          ]        
-        },
-        "db2" : {
-          "ip" : "127.0.0.1",
-          "port" : "6612",
-          "settings" : [
-            "check",
-            [ "port", "9200"  ],
-            [ "inter", "12000" ],
-            [ "rise", "3" ],
-            [ "fall", "3" ],
-            "backup"
-          ]        
-        }      
-      }
-    },
-    "mysql_read" : {
-      "port" : "3306",
-      "directives" : {
-        "mode" : "tcp",
-        "balance" : "leastconn"
-      },
-      "options" : [
-        "httpchk"
-      ],
-      "servers" : {
-        "db1" : {
-          "ip" : "127.0.0.1",
-          "port" : "6612",
-          "settings" : [
-            "check",
-            [ "port", "9200"  ],
-            [ "inter", "12000" ],
-            [ "rise", "3" ],
-            [ "fall", "3" ]
-          ]        
-        }      
-      }
-    }
+  "haproxy_default_timeouts" : {
+    "connect" : "5000ms",
+    "client" : "50000ms",
+    "server" : "50000ms"
   },
+  "haproxy_default_options" : {
+    "tcplog" : "",
+    "dontlognull" : "",
+    "redispatch" : ""
+  },
+  "haproxy_proxies" : {},
+  "keepalived_package_ensure" : "present",
+  "keepalived_service_ensure" : "stopped",
+  "keepalived_firewall_ports" : [],
+  "keepalived_sysctl_directives" : {},
+  "keepalived_global_definitions" : {},
+  "keepalived_virtual_servers" : [],
+  "keepalived_vrrp_sync_groups" : [],
+  "keepalived_vrrp_instances" : [],
+  "keepalived_vrrp_scripts" : [
+    {
+      "name" : "check_haproxy",
+      "script" : "'killall -0 haproxy'",
+      "interval" : "2",
+      "weight" : "2"
+    }
+  ],
+  "percona_server_classes" : [],
   "percona_version" : "5.5",
   "percona_client_ensure" : "present",
   "percona_server_ensure" : "present",
   "percona_common_ensure" : "present",
-  "percona_service_ensure" : "present",
+  "percona_service_ensure" : "stopped",
   "percona_server_id" : "1",
   "percona_server_ip" : "",
-  "percona_origin_ip" : "",
+  "percona_origin_addresses" : "",
+  "percona_cluster_name" : "drupal",
   "percona_allow_remote" : "true",
   "percona_configure_firewall" : "true",
+  "percona_percona_ports" : [ "4444", "4567", "4568" ],
   "percona_port" : "6612",
-  "percona_mysqlchk_port" : "9200",
+  "percona_mysqlchk_port" : "10200",
   "percona_user" : "mysql",
-  "percona_group" : "mysql",
-  "percona_skip_external_locking" : "true",
-  "percona_key_buffer_size" : "256M",
-  "percona_max_allowed_packet" : "1M",
-  "percona_table_open_cache" : "256",
-  "percona_sort_buffer_size" : "1M",
-  "percona_read_buffer_size" : "1M",
-  "percona_read_rnd_buffer_size" : "4M",
-  "percona_myisam_sort_buffer_size" : "64M",
-  "percona_thread_cache_size" : "8",
-  "percona_query_cache_size" : "16M",
-  "percona_thread_concurrency" : "8",
-  "percona_skip_networking" : "true",
+  "percona_group" : "mysql",  
   "percona_wsrep_slave_threads" : "2",
   "percona_wsrep_certify_non_pk" : "1",
   "percona_wsrep_max_ws_rows" : "131072",
@@ -388,44 +195,66 @@
   "percona_wsrep_retry_autocommit" : "1",
   "percona_wsrep_auto_increment_control" : "1",
   "percona_wsrep_causal_reads" : "0",
-  "percona_wsrep_notify_cmd" : "",
-  "percona_log_slave_updates" : "true",
-  "percona_default_storage_engine" : "innodb",
-  "percona_innodb_buffer_pool_size" : "256M",
-  "percona_innodb_additional_mem_pool_size" : "20M",
-  "percona_innodb_log_file_size" : "64M",
-  "percona_innodb_log_buffer_size" : "8M",
-  "percona_innodb_flush_log_at_trx_commit" : "1",
-  "percona_innodb_lock_wait_timeout" : "50",
+  "percona_wsrep_notify_cmd" : "",  
+  "percona_default_storage_engine" : "innodb",  
+  "percona_innodb_flush_log_at_trx_commit" : "1",  
   "percona_innodb_autoinc_lock_mode" : "2",
-  "percona_innodb_locks_unsafe_for_binlog" : "1",
-  "percona_mysql_no_auto_rehash" : "true",
-  "percona_mysql_safe_updates" : "false",
-  "percona_mysqldump_quick" : "true",
-  "percona_mysqldump_max_allowed_packet" : "16M",
-  "percona_myisamchk_key_buffer_size" : "128M",
-  "percona_myisamchk_sort_buffer_size" : "128M",
-  "percona_myisamchk_read_buffer" : "2M",
-  "percona_myisamchk_write_buffer" : "2M",
-  "percona_mysqlhotcopy_interactive_timeout" : "true",
-  "percona_user_password" : "",
+  "percona_innodb_locks_unsafe_for_binlog" : "1",  
+  "percona_user_name" : "db_user",
+  "percona_user_password" : "db_user",
   "percona_user_database" : "*",
   "percona_user_host" : "localhost",
   "percona_user_permissions" : "ALL",
   "percona_user_grant" : "true",
   "percona_database_sql_dump_file" : "",
-  "cloudfuse_libfuse_dev_ensure" : "present",
-  "cloudfuse_source" : "git://github.com/redbo/cloudfuse.git",
-  "cloudfuse_revision" : "master",
-  "cloudfuse_gid" : "0",
-  "cloudfuse_umask" : "007",
-  "cloudfuse_auth_url" : "https://auth.api.rackspacecloud.com/v1.0",
-  "cloudfuse_cache_timeout" : "300",
-  "cloudfuse_cloud_user" : "",
-  "cloudfuse_cloud_api_key" : "",
-  "cloudfuse_container" : "public",
+  "percona_configurations" : {
+    "mysql" : {
+      "no-auto-rehash" : "",
+      "safe-updates" : ""
+    },
+    "mysqld" : {
+      "key_buffer_size" : "256M",
+      "max_allowed_packet" : "1M",
+      "table_open_cache" : "256",
+      "sort_buffer_size" : "1M",
+      "read_buffer_size" : "1M",
+      "read_rnd_buffer_size" : "4M",
+      "myisam_sort_buffer_size" : "64M",
+      "query_cache_size" : "16M",
+      "thread_cache_size" : "8",
+      "thread_concurrency" : "8",
+      "innodb_buffer_pool_size" : "256M",
+      "innodb_additional_mem_pool_size" : "20M",
+      "innodb_log_buffer_size" : "8M",
+      "innodb_lock_wait_timeout" : "50",
+      "log-slave-updates" : "",
+      "skip-external-locking" : "",  
+      "skip-networking" : ""
+    },
+    "mysqldump" : {
+      "quick" : "true",
+      "max_allowed_packet" : "16M"
+    },
+    "myisamchk" : {
+      "key_buffer_size" : "128M",
+      "sort_buffer_size" : "128M",
+      "read_buffer" : "2M",
+      "write_buffer" : "2M"    
+    },
+    "mysqlhotcopy" : {
+      "interactive-timeout" : ""
+    } 
+  },
+  "apache_drupal_classes" : [
+    "php::mod::apc",
+    "php::mod::curl",
+    "php::mod::gd",
+    "php::mod::xmlrpc",
+    "php::mod::uploadprogress",
+    "php::mod::xdebug"
+  ],
   "apache_package_ensure" : "present",
-  "apache_service_ensure" : "running",
+  "apache_service_ensure" : "stopped",
   "apache_use_dev" : "true",
   "apache_dev_ensure" : "present",
   "apache_conf_ensure" : "present",
@@ -528,8 +357,8 @@
   "php_cli_realpath_cache_ttl" : "120",
   "php_cli_zend_enable_gc" : "On",
   "php_cli_expose_php" : "Off",
-  "php_cli_max_execution_time" : "30",
-  "php_cli_max_input_time" : "60",
+  "php_cli_max_execution_time" : "300",
+  "php_cli_max_input_time" : "600",
   "php_cli_max_input_nesting_level" : "64",
   "php_cli_max_input_vars" : "1000",
   "php_cli_memory_limit" : "-1",
@@ -552,7 +381,7 @@
   "php_cli_register_long_arrays" : "Off",
   "php_cli_register_argc_argv" : "Off",
   "php_cli_auto_globals_jit" : "On",
-  "php_cli_post_max_size" : "8M",
+  "php_cli_post_max_size" : "40M",
   "php_cli_magic_quotes_gpc" : "Off",
   "php_cli_magic_quotes_runtime" : "Off",
   "php_cli_magic_quotes_sybase" : "Off",
@@ -563,7 +392,7 @@
   "php_cli_always_populate_raw_post_data" : "Off",
   "php_cli_enable_dl" : "On",
   "php_cli_file_uploads" : "On",
-  "php_cli_upload_max_filesize" : "2M",
+  "php_cli_upload_max_filesize" : "30M",
   "php_cli_max_file_uploads" : "20",
   "php_cli_allow_url_fopen" : "On",
   "php_cli_allow_url_include" : "Off",
@@ -802,7 +631,7 @@
   "php_apc_cache_by_default" : "1",
   "php_apc_filters" : "",
   "php_apc_file_update_protection" : "2",
-  "php_apc_enable_cli" : "0",
+  "php_apc_enable_cli" : "1",
   "php_apc_max_file_size" : "1M",
   "php_apc_stat" : "1",
   "php_apc_stat_ctime" : "0",
@@ -850,5 +679,32 @@
   "php_pdo_mysql_default_socket" : "",
   "drupal_drush_package" : "drush/drush",
   "drupal_drush_ensure" : "present",
-  "drupal_drush_source" : "pear.drush.org/drush"
+  "drupal_drush_source" : "pear.drush.org/drush",
+  "cloudfuse_libfuse_dev_ensure" : "present",
+  "cloudfuse_source" : "git://github.com/redbo/cloudfuse.git",
+  "cloudfuse_revision" : "master",
+  "cloudfuse_gid" : "0",
+  "cloudfuse_umask" : "007",
+  "cloudfuse_auth_url" : "https://auth.api.rackspacecloud.com/v1.0",
+  "cloudfuse_cache_timeout" : "300",
+  "cloudfuse_cloud_user" : "",
+  "cloudfuse_cloud_api_key" : "",
+  "base_post_update_commands" : [],
+  "base_classes" : [ "nullmailer", "haproxy" ],
+  "base_users" : [ "admin" ],
+  "base_user_admin_ensure" : "present",
+  "base_user_admin_alt_groups" : [ "git" ],
+  "base_user_admin_email" : "",
+  "base_user_admin_comment" : "Administrator",
+  "base_user_admin_allowed_ssh_key" : "",
+  "base_user_admin_allowed_ssh_key_type" : "rsa",
+  "base_user_admin_public_ssh_key" : "",
+  "base_user_admin_private_ssh_key" : "",
+  "base_user_admin_ssh_key_type" : "rsa",
+  "base_user_admin_password" : "",
+  "base_user_admin_shell" : "/bin/bash",
+  "base_puppet_source" : "git://github.com/coraltech/puppet-lib.git",
+  "base_puppet_revision" : "master",
+  "base_config_source" : "",
+  "base_config_revision" : ""
 }
