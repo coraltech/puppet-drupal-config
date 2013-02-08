@@ -1,0 +1,32 @@
+{
+  "profiles" : [ "percona_server" ],
+  "global_facts" : {
+    "server_stage" : "percona_initialize_master"
+  },
+  "percona_server_databases" : [ "panopoly", "new" ],
+  "percona_server_database_panopoly_databases" : [ "panopoly" ],
+  "percona_server_database_panopoly_ensure" : "importdb",
+  "percona_server_database_panopoly_sql_dump_file" : "/var/git/databases.git/panopoly.sql",
+  "percona_server_database_panopoly_user" : "panopoly",
+  "percona_server_database_panopoly_password" : "panopoly",
+  "percona_server_database_panopoly_permissions" : "ALL",
+  "percona_server_database_panopoly_grant" : "false",
+  "percona_server_database_panopoly_allow_remote" : "true",
+  "percona_server_database_new_databases" : [ "new" ],
+  "percona_server_database_new_ensure" : "present",
+  "percona_server_database_new_sql_dump_file" : "",
+  "percona_server_database_new_user" : "new",
+  "percona_server_database_new_password" : "new",
+  "percona_server_database_new_permissions" : "ALL",
+  "percona_server_database_new_grant" : "false",
+  "percona_server_database_new_allow_remote" : "true",
+  "percona_server_repos" : [ "databases" ],
+  "percona_server_repo_databases_source" : "",
+  "percona_server_repo_databases_revision" : "master",
+  "percona_server_repo_databases_base" : "false",
+  "percona_server_repo_databases_post_update_commands" : [
+    "echo 'Hello world!'"
+  ],
+  "percona_server_id" : "1",
+  "percona_server_ip" : "172.10.20.11"
+}
