@@ -1,0 +1,35 @@
+{
+  "start": ["echo", "ls"],
+  "commands": {
+    "echo": {
+      "command": "echo",
+      "args": "default",
+      "events": "regexp"
+    },
+    "ls" : {
+      "command": "ls",
+      "flags": ["a", "l"],
+      "data": {
+        "color=": "always"
+      }
+    }
+  },
+  "events": {
+    "default_text": {
+      "type": "regexp",
+      "pattern": "default"
+    }
+  },
+  "actions": {
+    "list_files": {
+      "commands": ["ls", "echo"],
+      "events": "default_text",
+      "flags": {
+        "ls": ["l"]
+      },
+      "args": {
+        "echo": "done!"
+      }
+    }
+  }
+}
