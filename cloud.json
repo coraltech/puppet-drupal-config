@@ -1,0 +1,68 @@
+{
+  "repositories" : { 
+    "config" : "config.git"  
+  },
+  "vm_network_bridged" : "false",
+  "vm_box" : "precise64",
+  "vm_box_url" : "http://files.vagrantup.com/precise64.box",
+  "puppet_manifest_path" : "puppet",
+  "puppet_manifest_file" : "site.pp",  
+  "puppet_module_path" : [ "modules", "core/modules" ],
+  "settings" : {
+    "drupal" : {
+      "vm_cpus" : "1",
+      "vm_memory" : "512",
+      "virtual_ip" : "172.5.5.5",
+      "virtual_hostname" : "percona.loc",
+      "shares" : [ "www", "puppet_reports" ]
+    },
+    "percona" : {
+      "vm_cpus" : "1",
+      "vm_memory" : "512",
+      "shares" : [ "puppet_reports" ]
+    },
+    "vagrant" : { 
+      "facts" : { 
+        "server_location" : "vagrant",
+        "server_environment" : "development"
+      }
+    }
+  },
+  "shares" : {
+    "www" : {
+      "local_dir" : "share/www",
+      "remote_dir" : "/var/www"      
+    },
+    "puppet_reports" : {
+      "local_dir" : "share/puppet",
+      "remote_dir" : "/var/log/puppet/reports"
+    }
+  },
+  "servers" : {
+    "drupal1" : {
+      "hostname" : "drupal1.loc",
+      "public_ip" : "172.10.10.11",
+      "settings" : [ "drupal", "vagrant" ]
+    },
+    "drupal2" : {
+      "hostname" : "drupal2.loc",
+      "public_ip" : "172.10.10.12",
+      "settings" : [ "drupal", "vagrant" ]
+    },
+    "percona1" : {
+      "hostname" : "percona1.loc",
+      "public_ip" : "172.10.20.11",
+      "settings" : [ "percona", "vagrant" ]
+    },
+    "percona2" : {
+      "hostname" : "percona2.loc",
+      "public_ip" : "172.10.20.12",
+      "settings" : [ "percona", "vagrant" ]
+    },
+    "percona3" : {
+      "hostname" : "percona3.loc",
+      "public_ip" : "172.10.20.13",
+      "settings" : [ "percona", "vagrant" ]
+    }
+  }
+}
