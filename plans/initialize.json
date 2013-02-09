@@ -1,0 +1,62 @@
+{
+  "start": ["update"],
+  "commands": {
+    "init": {
+      "data": {
+        "min": "1",
+        "tries": "3",
+        "exit": "git_password_changed"
+      },
+      "flags": ["destroy"],
+      "cloud": "init",
+      "events": "puppet",
+      "args": ["drupal1"]
+    },
+    "update": {
+      "data": {
+        "min": "1",
+        "tries": "1"
+      },
+      "cloud": "update",
+      "events": "puppet",
+      "args": ["drupal1"]
+    },
+    "push": {
+      "data": {
+        "message": "Saving state",
+        "branch": "master",
+        "repos": "config"
+      },
+      "flags": ["commit", "allow_empty", "tags"],
+      "cloud": "push",
+      "events": "puppet",
+      "args": ["drupal1"]
+    }
+  },
+  "events": {
+    "git_password_changed": {
+      "message": "changed",
+      "operation": "password",
+      "element": "User[git]",
+      "type": "puppet"
+    },
+    "packages_updated": {
+      "message": "success",
+      "operation": "returns",
+      "element": "Exec[update-packages]",
+      "type": "puppet"
+    }
+  },
+  "actions": {
+    "push_config": {
+      "commands": ["push", "update"],
+      "data": {
+        "update": {
+          "tries": "5"
+        }
+      },
+      "trigger_success": "config_pushed",
+      "events": [ "packages_updated" ] 
+    }
+  }
+}
